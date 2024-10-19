@@ -1,0 +1,12 @@
+[Unit]
+Description=Apply WireGuard Routes and iptables rules
+After=wg-quick@%i.service
+Requires=wg-quick@%i.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/bin/apply_wg_routes.py
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
